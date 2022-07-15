@@ -1,5 +1,5 @@
 .vs/
-/Reportino.Api/appsettings.Development.json
+/Server.Api/appsettings.Development.json
 bin/
 obj/
 .idea

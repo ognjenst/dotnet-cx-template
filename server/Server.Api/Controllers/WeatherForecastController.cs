@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace IssueTracker.Controllers
+namespace Server.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

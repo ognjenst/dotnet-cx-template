@@ -1,4 +1,4 @@
-namespace IssueTracker
+namespace Server.Api
 {
     public class WeatherForecast
     {
