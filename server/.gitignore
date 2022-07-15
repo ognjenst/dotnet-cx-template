@@ -1,0 +1,6 @@
+.vs/
+/Reportino.Api/appsettings.Development.json
+bin/
+obj/
+.idea
+dist/
