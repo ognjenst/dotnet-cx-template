@@ -1,6 +1,8 @@
-﻿namespace Server.Persistance
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Server.Persistance
 {
-    public class ServerDbContext
+    public class ServerDbContext : DbContext
     {
 
     }
