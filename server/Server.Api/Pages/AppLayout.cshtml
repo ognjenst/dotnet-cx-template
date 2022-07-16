@@ -1,0 +1,47 @@
+﻿@using Server.Api.Utilities;
+@using Microsoft.AspNetCore.Html;
+@using Microsoft.Extensions.Configuration;
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnvironment;
+
+@inject IConfiguration Configuration;
+
+@{
+    var distFileLookup = new DistFileLookup(hostingEnvironment.WebRootPath);
+
+    Func<string, string, string, string> GetFileName = (string folder, string file, string ext) =>
+    {
+        return DebugUtil.IsDebugMode
+    ? $"https://localhost:7201/{file}{ext}"
+    : "/" + folder + "/" + distFileLookup.ResolveFileName(folder, file, ext);
+    };
+}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title>Reportino</title>
+    @RenderSection("meta", false)
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" />
+    <link rel="stylesheet" href="~/fa/css/light.css" />
+    <link rel="stylesheet" href="~/fa/css/fontawesome.css" />
+
+    @if (!DebugUtil.IsDebugMode)
+    {
+        <link rel="stylesheet" href="@GetFileName("dist", "app", ".css")" />
+    }
+</head>
+
+<body>
+    @Html.AntiForgeryToken()
+    <div id="app"></div>
+    <script>var initData = {
+
+        };</script>
+    @RenderBody()
+    <script type="text/javascript" src="@GetFileName("dist", "app", ".js")"></script>
+</body>
+
+</html>
